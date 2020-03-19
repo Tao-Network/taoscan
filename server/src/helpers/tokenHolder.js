@@ -57,10 +57,10 @@ let TokenHolderHelper = {
                 holder.quantityNumber = newQuantity.dividedBy(10 ** parseInt(decimals)).toNumber() || 0
                 holder.save()
             } else if (tokenType === 'trc2') {
-                let holder = await db.TokenTrc21Holder.findOne({ hash: hash, token: token })
+                let holder = await db.TokenTrc2Holder.findOne({ hash: hash, token: token })
                 if (!holder) {
                     // Create new.
-                    holder = await db.TokenTrc21Holder.create({
+                    holder = await db.TokenTrc2Holder.create({
                         hash: hash,
                         token: token,
                         quantity: 0

@@ -119,12 +119,12 @@ let AccountHelper = {
         account.contract = await db.Contract.findOne({ hash: account.hash })
 
         // Check has token holders.
-        let hasTrc20 = await db.TokenHolder.findOne({ hash: account.hash })
-        let hasTrc21 = await db.TokenTrc21Holder.findOne({ hash: account.hash })
-        let hasTrc721 = await db.TokenNftHolder.findOne({ holder: account.hash })
-        account.hasTrc20 = !!hasTrc20
-        account.hasTrc21 = !!hasTrc21
-        account.hasTrc721 = !!hasTrc721
+        let hasTrc1 = await db.TokenHolder.findOne({ hash: account.hash })
+        let hasTrc2 = await db.TokenTrc2Holder.findOne({ hash: account.hash })
+        let hasTrc3 = await db.TokenNftHolder.findOne({ holder: account.hash })
+        account.hasTrc1 = !!hasTrc1
+        account.hasTrc2 = !!hasTrc2
+        account.hasTrc3 = !!hasTrc3
         return account
     },
 

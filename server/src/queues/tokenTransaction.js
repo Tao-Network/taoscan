@@ -60,7 +60,7 @@ consumer.task = async function (job, done) {
                     _log,
                     { upsert: true, new: true })
             } else {
-                await db.TokenTrc21Tx.updateOne(
+                await db.TokenTrc2Tx.updateOne(
                     { transactionHash: transactionHash, from: _log.from, to: _log.to },
                     _log,
                     { upsert: true, new: true })

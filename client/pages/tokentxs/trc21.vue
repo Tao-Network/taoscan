@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import TableTokenTxTrc21 from '~/components/TableTokenTxTrc21'
+import TableTokenTxTrc2 from '~/components/TableTokenTxTrc2'
 
 export default {
     components: {
-        TableTokenTxTrc21
+        TableTokenTxTrc2
     },
     head () {
         return {

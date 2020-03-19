@@ -116,7 +116,7 @@ TokenHolderController.get('/token-holders/trc2', [
         }
         params.sort = { quantityNumber: -1 }
         params.query = Object.assign(params.query, { quantityNumber: { $gt: 0 } })
-        let data = await paginate(req, 'TokenTrc21Holder', params)
+        let data = await paginate(req, 'TokenTrc2Holder', params)
 
         let items = data.items
         if (items.length) {

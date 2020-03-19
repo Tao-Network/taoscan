@@ -207,10 +207,10 @@
 import mixin from '~/plugins/mixin'
 import TableTokenTx from '~/components/TableTokenTx'
 import TableTokenTxNft from '~/components/TableTokenTxNft'
-import TableTokenTxTrc21 from '~/components/TableTokenTxTrc21'
+import TableTokenTxTrc2 from '~/components/TableTokenTxTrc2'
 import TableTokenHolder from '~/components/TableTokenHolder'
 import TableTokenNftHolder from '~/components/TableTokenNftHolder'
-import TableTokenTrc21Holder from '~/components/TableTokenTrc21Holder'
+import TableTokenTrc2Holder from '~/components/TableTokenTrc2Holder'
 import ReadContract from '~/components/ReadContract'
 import ReadSourceCode from '~/components/ReadSourceCode'
 
@@ -219,11 +219,11 @@ export default {
         ReadSourceCode,
         TableTokenTx,
         TableTokenTxNft,
-        TableTokenTxTrc21,
+        TableTokenTxTrc2,
         ReadContract,
         TableTokenHolder,
         TableTokenNftHolder,
-        TableTokenTrc21Holder
+        TableTokenTrc2Holder
     },
     mixins: [mixin],
     head () {

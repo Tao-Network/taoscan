@@ -161,11 +161,11 @@
 import mixin from '~/plugins/mixin'
 import ReadSourceCode from '~/components/ReadSourceCode'
 import ReadContract from '~/components/ReadContract'
-import TableTokenTxTrc21 from '~/components/TableTokenTxTrc21'
+import TableTokenTxTrc2 from '~/components/TableTokenTxTrc2'
 
 export default {
     components: {
-        TableTokenTxTrc21,
+        TableTokenTxTrc2,
         ReadContract,
         ReadSourceCode
     },

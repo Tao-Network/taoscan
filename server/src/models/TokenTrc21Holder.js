@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const TokenTrc21Holder = new Schema({
+const TokenTrc2Holder = new Schema({
     hash: { type: String, index: true },
     token: { type: String, index: true },
     tokenDecimals: Number,
@@ -16,4 +16,4 @@ const TokenTrc21Holder = new Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('TokenTrc21Holder', TokenTrc21Holder)
+module.exports = mongoose.model('TokenTrc2Holder', TokenTrc2Holder)

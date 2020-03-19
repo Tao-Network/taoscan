@@ -178,7 +178,7 @@
             </b-tab>
             <!--:title="'Token Holding (' + formatNumber(tokensCount) + ')'"-->
             <b-tab
-                v-if="address && address.hasTrc20"
+                v-if="address && address.hasTrc1"
                 id="trc1Holding"
                 title="TRC1 Holding"
                 href="#trc1Holding">
@@ -189,7 +189,7 @@
                     :page="this"/>
             </b-tab>
             <b-tab
-                v-if="address && address.hasTrc21"
+                v-if="address && address.hasTrc2"
                 id="trc2Holding"
                 title="TRC2 Holding"
                 href="#trc2Holding">
@@ -200,7 +200,7 @@
                     :page="this"/>
             </b-tab>
             <b-tab
-                v-if="address && address.hasTrc721"
+                v-if="address && address.hasTrc3"
                 id="trc3Inventory"
                 title="TRC3 Inventory"
                 href="#trc3Inventory">

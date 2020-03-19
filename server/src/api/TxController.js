@@ -505,7 +505,7 @@ TxController.get(['/txs/:slug', '/tx/:slug'], [
         trc1Txs = await TokenTransactionHelper.formatTokenTransaction(trc1Txs)
         tx.trc1Txs = trc1Txs
 
-        let trc2Txs = await db.TokenTrc21Tx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
+        let trc2Txs = await db.TokenTrc2Tx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
         trc2Txs = await TokenTransactionHelper.formatTokenTransaction(trc2Txs)
         tx.trc2Txs = trc2Txs
 
@@ -704,7 +704,7 @@ TxController.get('/txs/combine/:address', [
         }).sort({ blockNumber: -1 }).limit(limit * page).lean().exec() || []
 
         // get token trc2 tx by account
-        const token21Txs1 = db.TokenTrc21Tx.find({
+        const token21Txs1 = db.TokenTrc2Tx.find({
             $or: [{ to: address }, { from: address }],
             blockNumber: { $lte: blockNumber }
         }).sort({ blockNumber: -1 }).limit(limit * page).lean().exec() || []

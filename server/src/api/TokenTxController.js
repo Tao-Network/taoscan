@@ -91,7 +91,7 @@ TokenTxController.get('/token-txs/:tokenType', [
         if (tokenType === 'trc1') {
             data = await paginate(req, 'TokenTx', params, total)
         } else if (tokenType === 'trc2') {
-            data = await paginate(req, 'TokenTrc21Tx', params, total)
+            data = await paginate(req, 'TokenTrc2Tx', params, total)
         } else if (tokenType === 'trc3') {
             data = await paginate(req, 'TokenNftTx', params, total)
         } else {
@@ -150,7 +150,7 @@ TokenTxController.get('/token-txs/:tokenType/:txHash', [
         if (tokenType === 'trc1') {
             data = await paginate(req, 'TokenTx', params, null)
         } else if (tokenType === 'trc2') {
-            data = await paginate(req, 'TokenTrc21Tx', params, null)
+            data = await paginate(req, 'TokenTrc2Tx', params, null)
         } else if (tokenType === 'trc3') {
             data = await paginate(req, 'TokenNftTx', params, null)
         } else {

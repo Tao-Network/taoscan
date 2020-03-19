@@ -61,43 +61,43 @@ let TokenHelper = {
             'minFee': '0x24ec7590'
         }
 
-        let isTrc21 = true
+        let isTrc2 = true
         for (let trc2 in trc2Function) {
             let codeCheck = trc2Function[trc2]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
-                isTrc21 = false
+                isTrc2 = false
                 break
             }
         }
-        if (isTrc21) {
+        if (isTrc2) {
             return 'trc2'
         }
 
-        let isTrc20 = true
+        let isTrc1 = true
         for (let trc1 in trc1Function) {
             let codeCheck = trc1Function[trc1]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
-                isTrc20 = false
+                isTrc1 = false
                 break
             }
         }
-        if (isTrc20) {
+        if (isTrc1) {
             return 'trc1'
         }
 
-        let isTrc721 = true
+        let isTrc3 = true
         for (let trc3 in trc3Function) {
             let codeCheck = trc3Function[trc3]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
                 console.log(trc3Function[trc3])
-                isTrc721 = false
+                isTrc3 = false
                 break
             }
         }
-        if (isTrc721) {
+        if (isTrc3) {
             return 'trc3'
         }
         return 'other'
