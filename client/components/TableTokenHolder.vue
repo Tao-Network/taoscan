@@ -1,30 +1,30 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-user-secret tomo-empty__icon"/>
-            <p class="tomo-empty__description">No holder found</p>
+            class="tao-empty">
+            <i class="fa fa-user-secret tao-empty__icon"/>
+            <p class="tao-empty__description">No holder found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('holder', 'holders', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('holder', 'holders', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--holders">
+            class="tao-table--holders">
             <template
                 slot="hash"
                 slot-scope="props">
                 <nuxt-link
-                    :to="{name: 'tokens-slug-trc20-holder', params: { slug: address, holder: props.item.hash}}"
+                    :to="{name: 'tokens-slug-trc1-holder', params: { slug: address, holder: props.item.hash}}"
                     class="text-truncate">{{ props.item.hash }}</nuxt-link>
             </template>
 
@@ -44,7 +44,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

@@ -1,14 +1,14 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
-        <div class="card tomo-card tomo-card--token">
-            <div class="tomo-card__header">
-                <h2 class="tomo-card__headline">
+        <div class="card tao-card tao-card--token">
+            <div class="tao-card__header">
+                <h2 class="tao-card__headline">
                     <img
                         v-if="isVerified"
-                        :src="'https://raw.githubusercontent.com/tomochain/tokens/master/tokens/' + hash + '.png'"
+                        :src="'https://raw.githubusercontent.com/taoblockchain/tokens/master/tokens/' + hash + '.png'"
                         width="35px">
                     {{ tokenName }}&nbsp;</h2>
                 <i
@@ -17,7 +17,7 @@
                     aria-hidden="true"/>
                 <h6 class="mb-0">{{ symbol }}</h6>
             </div>
-            <div class="tomo-card__body">
+            <div class="tao-card__body">
                 <div
                     v-if="isPhising"
                     class="alert alert-danger">
@@ -27,7 +27,7 @@
                     <b-col md="6">
                         <table
                             v-if="token"
-                            class="tomo-card__table">
+                            class="tao-card__table">
                             <tbody>
                                 <tr>
                                     <td>Total Supply</td>
@@ -55,7 +55,7 @@
                                         v-else>
                                         Not Available,
                                         <a
-                                            href="https://github.com/tomochain/tokens"
+                                            href="https://github.com/taoblockchain/tokens"
                                             target="_blank"
                                             class="text-truncate">Update</a> ?
                                     </td>
@@ -66,7 +66,7 @@
                     <b-col md="6">
                         <table
                             v-if="token"
-                            class="tomo-card__table">
+                            class="tao-card__table">
                             <tbody>
                                 <tr>
                                     <td>Contract</td>
@@ -76,7 +76,7 @@
                                             class="text-truncate">{{ token.hash }}</nuxt-link>
                                     </td>
                                 </tr>
-                                <tr v-if="token.type === 'trc20'">
+                                <tr v-if="token.type === 'trc1'">
                                     <td>Decimal</td>
                                     <td>{{ token.decimals }}</td>
                                 </tr>
@@ -99,7 +99,7 @@
                                         <span v-else>
                                             Not Available,
                                             <a
-                                                href="https://github.com/tomochain/tokens"
+                                                href="https://github.com/taoblockchain/tokens"
                                                 target="_blank"
                                                 class="text-truncate">Update</a> ?
                                         </span>
@@ -139,23 +139,23 @@
                 <b-tabs
                     ref="allTabs"
                     v-model="tabIndex"
-                    class="tomo-tabs">
+                    class="tao-tabs">
                     <!--:title="'Token Transfers (' + formatNumber(tokenTxsCount) + ')'"-->
                     <b-tab
                         title="Token Transfers"
                         href="#tokenTransfers">
                         <table-token-tx
-                            v-if="token.type === 'trc20'"
+                            v-if="token.type === 'trc1'"
                             :token="hash"
                             :parent="'#tokenTransfers'"
                             :page="this"/>
                         <table-token-tx-nft
-                            v-if="token.type === 'trc721'"
+                            v-if="token.type === 'trc3'"
                             :token="hash"
                             :parent="'#tokenTransfers'"
                             :page="this"/>
-                        <table-token-tx-trc21
-                            v-if="token.type === 'trc21'"
+                        <table-token-tx-trc2
+                            v-if="token.type === 'trc2'"
                             :token="hash"
                             :parent="'#tokenTransfers'"
                             :page="this"/>
@@ -165,17 +165,17 @@
                         title="Token Holders"
                         href="#tokenHolders">
                         <table-token-holder
-                            v-if="token.type === 'trc20'"
+                            v-if="token.type === 'trc1'"
                             :address="hash"
                             :parent="'#tokenHolders'"
                             :page="this"/>
                         <table-token-nft-holder
-                            v-if="token.type === 'trc721'"
+                            v-if="token.type === 'trc3'"
                             :address="hash"
                             :parent="'#tokenHolders'"
                             :page="this"/>
-                        <table-token-trc21-holder
-                            v-if="token.type === 'trc21'"
+                        <table-token-trc2-holder
+                            v-if="token.type === 'trc2'"
                             :address="hash"
                             :parent="'#tokenHolders'"
                             :page="this"/>

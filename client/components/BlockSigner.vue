@@ -1,24 +1,24 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-user-secret tomo-empty__icon"/>
-            <p class="tomo-empty__description">No signer found</p>
+            class="tao-empty">
+            <i class="fa fa-user-secret tao-empty__icon"/>
+            <p class="tao-empty__description">No signer found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('signer', 'signers', total) }} found</p>
+            class="tao-total-items">{{ _nFormatNumber('signer', 'signers', total) }} found</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="signers"
-            class="tomo-table--signers">
+            class="tao-table--signers">
             <template
                 slot="signer"
                 slot-scope="props">

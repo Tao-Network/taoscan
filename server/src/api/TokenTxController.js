@@ -56,7 +56,7 @@ TokenTxController.get('/token-txs', [
 })
 
 TokenTxController.get('/token-txs/:tokenType', [
-    check('tokenType').exists().isString().withMessage('trc20/trc21/trc721'),
+    check('tokenType').exists().isString().withMessage('trc1/trc2/trc3'),
     check('limit').optional().isInt({ max: 50 }).withMessage('Limit is less than 50 items per page'),
     check('page').optional().isInt({ max: 500 }).withMessage('Page is less than or equal 500'),
     check('holder').optional().isLength({ min: 42, max: 42 }).withMessage('Account address is incorrect.'),
@@ -88,11 +88,11 @@ TokenTxController.get('/token-txs/:tokenType', [
         }
         params.sort = { blockNumber: -1 }
         let data
-        if (tokenType === 'trc20') {
+        if (tokenType === 'trc1') {
             data = await paginate(req, 'TokenTx', params, total)
-        } else if (tokenType === 'trc21') {
+        } else if (tokenType === 'trc2') {
             data = await paginate(req, 'TokenTrc21Tx', params, total)
-        } else if (tokenType === 'trc721') {
+        } else if (tokenType === 'trc3') {
             data = await paginate(req, 'TokenNftTx', params, total)
         } else {
             data = {
@@ -121,7 +121,7 @@ TokenTxController.get('/token-txs/:tokenType', [
 })
 
 TokenTxController.get('/token-txs/:tokenType/:txHash', [
-    check('tokenType').exists().isString().withMessage('trc20/trc21/trc721'),
+    check('tokenType').exists().isString().withMessage('trc1/trc2/trc3'),
     check('txHash').exists().isString().withMessage('transaction hash'),
     check('holder').optional().isLength({ min: 42, max: 42 }).withMessage('Account address is incorrect.'),
     check('limit').optional().isInt({ max: 50 }).withMessage('Limit is less than 50 items per page'),
@@ -147,11 +147,11 @@ TokenTxController.get('/token-txs/:tokenType/:txHash', [
         }
         params.sort = { blockNumber: -1 }
         let data
-        if (tokenType === 'trc20') {
+        if (tokenType === 'trc1') {
             data = await paginate(req, 'TokenTx', params, null)
-        } else if (tokenType === 'trc21') {
+        } else if (tokenType === 'trc2') {
             data = await paginate(req, 'TokenTrc21Tx', params, null)
-        } else if (tokenType === 'trc721') {
+        } else if (tokenType === 'trc3') {
             data = await paginate(req, 'TokenNftTx', params, null)
         } else {
             data = {

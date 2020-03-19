@@ -1,23 +1,23 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
-        <div class="card tomo-card tomo-card--token">
-            <div class="tomo-card__header">
-                <h2 class="tomo-card__headline">{{ tokenName }}&nbsp;</h2>
+        <div class="card tao-card tao-card--token">
+            <div class="tao-card__header">
+                <h2 class="tao-card__headline">{{ tokenName }}&nbsp;</h2>
                 <i
                     v-if="moreInfo"
                     class="fa fa-check-circle token-status"
                     aria-hidden="true"/>
                 <h6 class="mb-0">{{ symbol }}</h6>
             </div>
-            <div class="tomo-card__body">
+            <div class="tao-card__body">
                 <b-row>
                     <b-col md="6">
                         <table
                             v-if="token"
-                            class="tomo-card__table">
+                            class="tao-card__table">
                             <tbody>
                                 <tr>
                                     <td>Holder</td>
@@ -54,7 +54,7 @@
                     <b-col md="6">
                         <table
                             v-if="token"
-                            class="tomo-card__table">
+                            class="tao-card__table">
                             <tbody>
                                 <tr>
                                     <td>Contract</td>
@@ -120,7 +120,7 @@
 
         <b-row>
             <b-col>
-                <b-tabs class="tomo-tabs">
+                <b-tabs class="tao-tabs">
                     <!--:title="'Token Transfers (' + formatNumber(tokenTxsCount) + ')'"-->
                     <b-tab title="Token Transfers">
                         <table-token-tx-nft
@@ -172,7 +172,7 @@ export default {
     mixins: [mixin],
     head () {
         return {
-            title: 'Token TRC721 Holder Info'
+            title: 'Token TRC3 Holder Info'
         }
     },
     data () {

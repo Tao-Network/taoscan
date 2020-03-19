@@ -1,13 +1,13 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
-        <div class="card tomo-card tomo-card--block">
-            <div class="tomo-card__header">
+        <div class="card tao-card tao-card--block">
+            <div class="tao-card__header">
                 <h3
                     v-if="block"
-                    class="tomo-card__headline">Block
+                    class="tao-card__headline">Block
                     <span class="d-none d-lg-inline-block headline__block-number">#{{ block.number }}</span>
                 </h3>
                 <div
@@ -24,10 +24,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tomo-card__body">
+            <div class="tao-card__body">
                 <table
                     v-if="block"
-                    class="tomo-card__table">
+                    class="tao-card__table">
                     <tbody>
                         <tr>
                             <td>Height</td>
@@ -201,7 +201,7 @@
         <b-tabs
             ref="allTabs"
             v-model="tabIndex"
-            class="tomo-tabs"
+            class="tao-tabs"
             @input="onSwitchTab">
             <b-tab
                 title="Transactions"
@@ -229,16 +229,16 @@
                 href="#slashedNode">
                 <div
                     v-if="block.slashedNode.length === 0"
-                    class="tomo-empty">
-                    <i class="fa fa-cube tomo-empty__icon"/>
-                    <p class="tomo-empty__description">No slashed node</p>
+                    class="tao-empty">
+                    <i class="fa fa-cube tao-empty__icon"/>
+                    <p class="tao-empty__description">No slashed node</p>
                 </div>
                 <p
                     v-if="block.slashedNode.length > 0"
-                    class="tomo-total-items">{{ _nFormatNumber('node', 'nodes', block.slashedNode.length) }}</p>
+                    class="tao-total-items">{{ _nFormatNumber('node', 'nodes', block.slashedNode.length) }}</p>
                 <table
                     v-if="block.slashedNode.length > 0"
-                    class="tomo-table">
+                    class="tao-table">
                     <thead>
                         <tr><th>Coinbase</th></tr>
                     </thead>
@@ -260,17 +260,17 @@
                 href="#validators">
                 <div
                     v-if="block.validators.length === 0"
-                    class="tomo-empty">
-                    <i class="fa fa-cube tomo-empty__icon"/>
-                    <p class="tomo-empty__description">No slashed node</p>
+                    class="tao-empty">
+                    <i class="fa fa-cube tao-empty__icon"/>
+                    <p class="tao-empty__description">No slashed node</p>
                 </div>
                 <p
                     v-if="block.validators.length > 0"
-                    class="tomo-total-items">
+                    class="tao-total-items">
                     {{ _nFormatNumber('validator', 'validators', block.validators.length) }}</p>
                 <table
                     v-if="block.validators.length > 0"
-                    class="tomo-table">
+                    class="tao-table">
                     <thead>
                         <tr><th>Coinbase</th></tr>
                     </thead>
@@ -292,17 +292,17 @@
                 href="#randoms">
                 <div
                     v-if="block.randoms.length === 0"
-                    class="tomo-empty">
-                    <i class="fa fa-cube tomo-empty__icon"/>
-                    <p class="tomo-empty__description">No slashed node</p>
+                    class="tao-empty">
+                    <i class="fa fa-cube tao-empty__icon"/>
+                    <p class="tao-empty__description">No slashed node</p>
                 </div>
                 <p
                     v-if="block.randoms.length > 0"
-                    class="tomo-total-items">
+                    class="tao-total-items">
                     {{ _nFormatNumber('number', 'numbers', block.randoms.length) }}</p>
                 <table
                     v-if="block.validators.length > 0"
-                    class="tomo-table">
+                    class="tao-table">
                     <thead>
                         <tr><th>Random number</th></tr>
                     </thead>

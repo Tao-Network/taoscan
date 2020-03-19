@@ -1,18 +1,18 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-file-text-o tomo-empty__icon"/>
-            <p class="tomo-empty__description">No verified contract found</p>
+            class="tao-empty">
+            <i class="fa fa-file-text-o tao-empty__icon"/>
+            <p class="tao-empty__description">No verified contract found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">
+            class="tao-total-items">
             Total {{ _nFormatNumber('verified contract', 'verified contracts', total) }} found
         </p>
 
@@ -20,7 +20,7 @@
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--contracts">
+            class="tao-table--contracts">
 
             <template
                 slot="hash"
@@ -53,7 +53,7 @@
             :total-rows="pages * perPage"
             :per-page="perPage"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

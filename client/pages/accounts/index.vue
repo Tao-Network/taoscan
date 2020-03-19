@@ -1,24 +1,24 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-user-secret tomo-empty__icon"/>
-            <p class="tomo-empty__description">No account found</p>
+            class="tao-empty">
+            <i class="fa fa-user-secret tao-empty__icon"/>
+            <p class="tao-empty__description">No account found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('account', 'accounts', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('account', 'accounts', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--accounts">
+            class="tao-table--accounts">
 
             <template
                 slot="rank"
@@ -40,8 +40,8 @@
             <template
                 slot="balance"
                 slot-scope="props">
-                <span class="d-lg-none">{{ formatUnit(toTomo(props.item.balance, 5)) }}</span>
-                <span class="d-none d-lg-block">{{ formatUnit(toTomo(props.item.balance)) }}</span>
+                <span class="d-lg-none">{{ formatUnit(toTao(props.item.balance, 5)) }}</span>
+                <span class="d-none d-lg-block">{{ formatUnit(toTao(props.item.balance)) }}</span>
             </template>
         </table-base>
 
@@ -53,7 +53,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

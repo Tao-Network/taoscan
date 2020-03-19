@@ -3,16 +3,16 @@
         <b-navbar
             toggleable="lg"
             variant="white"
-            class="tomo-nav">
-            <div class="container container--wide tomo-nav__wrapper">
+            class="tao-nav">
+            <div class="container container--wide tao-nav__wrapper">
                 <b-navbar-brand :to="{name: 'index'}">
                     <img
                         src="~/assets/img/logo.svg"
-                        alt="TomoScan"
-                        class="tomo-nav__logo">
+                        alt="TaoScan"
+                        class="tao-nav__logo">
                 </b-navbar-brand>
                 <b-navbar-toggle
-                    class="tomo-nav__toggle"
+                    class="tao-nav__toggle"
                     target="nav_collapse">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -54,12 +54,12 @@
                         <b-nav-item-dropdown
                             :class="(isTokens || isTokenTxs) ? 'active' : ''"
                             text="Tokens">
-                            <b-dropdown-item :to="{name: 'tokens-trc20'}">TRC20 Tokens</b-dropdown-item>
-                            <b-dropdown-item :to="{name: 'tokentxs'}">TRC20 Transfers</b-dropdown-item>
-                            <b-dropdown-item :to="{name: 'tokens-trc21'}">TRC21 Tokens</b-dropdown-item>
-                            <b-dropdown-item :to="{name: 'tokentxs-trc21'}">TRC21 Transfers</b-dropdown-item>
-                            <b-dropdown-item :to="{name: 'tokens-nft'}">TRC721 Tokens</b-dropdown-item>
-                            <b-dropdown-item :to="{name: 'tokentxs-nft'}">TRC721 Transfers</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokens-trc1'}">TRC1 Tokens</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokentxs'}">TRC1 Transfers</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokens-trc2'}">TRC2 Tokens</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokentxs-trc2'}">TRC2 Transfers</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokens-nft'}">TRC3 Tokens</b-dropdown-item>
+                            <b-dropdown-item :to="{name: 'tokentxs-nft'}">TRC3 Transfers</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-nav-item-dropdown
                             text="Blocks">
@@ -67,9 +67,9 @@
                             <b-dropdown-item :to="{name: 'epochs'}">Epochs</b-dropdown-item>
                         </b-nav-item-dropdown>
                     </b-navbar-nav>
-                    <b-navbar-nav class="tomo-nav__login">
+                    <b-navbar-nav class="tao-nav__login">
                         <b-nav-item
-                            :href="'https://docs.tomochain.com/tomoscan/features/'"
+                            :href="'https://docs.tao.network/taoscan/features/'"
                             :target="'_blank'">Need help?</b-nav-item>
                             <!-- <b-nav-item
                             v-b-modal="'loginModal'"
@@ -106,12 +106,12 @@
         </b-navbar>
 
         <main
-            :class="isHomePage ? 'tomo-body-wrapper--home' : ''"
-            class="tomo-body-wrapper">
+            :class="isHomePage ? 'tao-body-wrapper--home' : ''"
+            class="tao-body-wrapper">
             <div class="container container--wide">
                 <div
                     v-if="! isHomePage"
-                    class="row align-items-center tomo-body-wrapper__heading">
+                    class="row align-items-center tao-body-wrapper__heading">
                     <b-col sm="5">
                         <breadcrumb/>
                     </b-col>
@@ -148,36 +148,36 @@
                                 placeholder="Search Address / TX / Block..."
                                 @keyup.enter="onGotoRoute">
                         </div>
-                        <div class="tomo-stat d-flex">
-                            <div class="tomo-stat__item">
+                        <div class="tao-stat d-flex">
+                            <div class="tao-stat__item">
                                 <nuxt-link :to="{name: 'accounts'}">
                                     <i
                                         v-if="! stats"
-                                        class="tomo-loading"/>
+                                        class="tao-loading"/>
                                     <span v-else>{{ formatNumber(stats.totalAddress) }}&nbsp;Accounts</span>
                                 </nuxt-link>
                             </div>
-                            <div class="tomo-stat__item">
+                            <div class="tao-stat__item">
                                 <nuxt-link :to="{name: 'tokens'}">
                                     <i
                                         v-if="! stats"
-                                        class="tomo-loading"/>
+                                        class="tao-loading"/>
                                     <span v-else>{{ formatNumber(stats.totalToken) }}&nbsp;Tokens</span>
                                 </nuxt-link>
                             </div>
-                            <div class="tomo-stat__item">
+                            <div class="tao-stat__item">
                                 <nuxt-link :to="{name: 'contracts'}">
                                     <i
                                         v-if="! stats"
-                                        class="tomo-loading"/>
+                                        class="tao-loading"/>
                                     <span v-else>{{ formatNumber(stats.totalSmartContract) }}&nbsp;Contracts</span>
                                 </nuxt-link>
                             </div>
-                            <div class="tomo-stat__item">
+                            <div class="tao-stat__item">
                                 <nuxt-link :to="{name: 'blocks'}">
                                     <i
                                         v-if="! stats"
-                                        class="tomo-loading"/>
+                                        class="tao-loading"/>
                                     <span v-else>{{ formatNumber(stats.totalBlock) }}&nbsp;Blocks</span>
                                 </nuxt-link>
                             </div>
@@ -188,56 +188,56 @@
             </div>
         </main>
 
-        <footer class="tomo-footer">
+        <footer class="tao-footer">
             <div class="container container--wide">
                 <div class="row">
                     <b-col
                         md="6"
-                        class="tomo-footer__copyright">
-                        <p>TomoScan {{ (new Date()).getFullYear() }} - <a
-                            :href="`https://github.com/tomochain/tomoscan/releases/tag/v${version}`">
+                        class="tao-footer__copyright">
+                        <p>TaoScan {{ (new Date()).getFullYear() }} - <a
+                            :href="`https://github.com/taoblockchain/taoscan/releases/tag/v${version}`">
                             v{{ version }}</a>
 
                             <code class="text-muted copyright__code">
-                                TomoChain/stable/linux-amd64/golang
+                                Tao/stable/linux-amd64/golang
                             </code>
                         </p>
                     </b-col>
                     <b-col
                         md="6"
                         class="text-md-right">
-                        <ul class="list-inline tomo-footer__social">
+                        <ul class="list-inline tao-footer__social">
                             <li class="list-inline-item">
                                 <a
-                                    href="https://t.me/tomochain"
+                                    href="https://t.me/taoblockchain"
                                     target="_blank">
                                     <i class="fa fa-telegram"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://www.facebook.com/tomochainofficial"
+                                    href="https://www.facebook.com/taoblockchainofficial"
                                     target="_blank">
                                     <i class="fa fa-facebook"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://twitter.com/TomoChainANN"
+                                    href="https://twitter.com/taoblockchainANN"
                                     target="_blank">
                                     <i class="fa fa-twitter"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://github.com/tomochain/"
+                                    href="https://github.com/taoblockchain/"
                                     target="_blank">
                                     <i class="fa fa-github"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://www.reddit.com/r/Tomochain/"
+                                    href="https://www.reddit.com/r/Tao/"
                                     target="_blank">
                                     <i class="fa fa-reddit"/>
                                 </a>
@@ -322,9 +322,9 @@ export default {
             self.getStats()
         }
 
-        self.darkMode = Cookie.get('tomoscan_theme') === 'dark'
+        self.darkMode = Cookie.get('taoscan_theme') === 'dark'
 
-        if (typeof Cookie.get('tomoscan_theme') === 'undefined') {
+        if (typeof Cookie.get('taoscan_theme') === 'undefined') {
             document.getElementById('dark-mode-toggle').classList.add('try-dark-mode')
         }
     },
@@ -365,10 +365,10 @@ export default {
             self.stats = data.stats
         },
         toggleDarkMode (e) {
-            let darkMode = Cookie.get('tomoscan_theme') !== 'dark'
+            let darkMode = Cookie.get('taoscan_theme') !== 'dark'
             this.darkMode = darkMode
 
-            Cookie.set('tomoscan_theme', darkMode ? 'dark' : 'light', {
+            Cookie.set('taoscan_theme', darkMode ? 'dark' : 'light', {
                 expires: 365
             })
 

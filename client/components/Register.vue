@@ -2,7 +2,7 @@
     <b-modal
         ref="modalRegister"
         :id="modalId"
-        class="tomo-modal"
+        class="tao-modal"
         title="Register"
         @ok="validate"
         @keydown.native.enter="validate">

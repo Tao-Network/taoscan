@@ -46,28 +46,28 @@ let TransactionHelper = {
             let web3 = await Web3Util.getWeb3()
             if (params.length >= 4) {
                 let srcAddress = await utils.unformatAddress(params[0])
-                let tomoRate
+                let taoRate
                 if (srcAddress === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee') {
-                    let tomoAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[2]))
-                    tomoAmount = tomoAmount.dividedBy(10 ** 18)
+                    let taoAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[2]))
+                    taoAmount = taoAmount.dividedBy(10 ** 18)
                     let constantAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[3]))
                     constantAmount = constantAmount.dividedBy(10 ** 2)
 
-                    tomoRate = constantAmount.dividedBy(tomoAmount).toNumber()
+                    taoRate = constantAmount.dividedBy(taoAmount).toNumber()
                 } else {
-                    let tomoAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[3]))
-                    tomoAmount = tomoAmount.dividedBy(10 ** 18)
+                    let taoAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[3]))
+                    taoAmount = taoAmount.dividedBy(10 ** 18)
                     let constantAmount = new BigNumber(web3.utils.hexToNumberString('0x' + params[2]))
                     constantAmount = constantAmount.dividedBy(10 ** 2)
 
-                    tomoRate = constantAmount.dividedBy(tomoAmount).toNumber()
+                    taoRate = constantAmount.dividedBy(taoAmount).toNumber()
                 }
 
                 let txExtraInfo = [
                     {
                         transactionHash: log.transactionHash,
                         infoName: 'Swap rate',
-                        infoValue: `1 TOMO = ${tomoRate} CONST`
+                        infoValue: `1 TAO = ${taoRate} CONST`
                     }
                 ]
                 await db.TxExtraInfo.insertMany(txExtraInfo)
@@ -105,7 +105,7 @@ let TransactionHelper = {
                     hash: tx.from,
                     countType: 'outTx'
                 })
-                if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TomoRandomize) {
+                if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TaoRandomize) {
                     if (!listHash.includes(tx.from.toLowerCase())) {
                         listHash.push(tx.from.toLowerCase())
                     }
@@ -128,7 +128,7 @@ let TransactionHelper = {
             }
             if (tx.to !== null) {
                 tx.to = tx.to.toLowerCase()
-                if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TomoRandomize) {
+                if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TaoRandomize) {
                     if (!listHash.includes(tx.to)) {
                         listHash.push(tx.to)
                     }
@@ -244,7 +244,7 @@ let TransactionHelper = {
             tx.isPending = false
 
             // Internal transaction
-            if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TomoRandomize) {
+            if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TaoRandomize) {
                 let internalTx = await TransactionHelper.getInternalTx(tx)
                 tx.i_tx = internalTx.length
                 let internalCount = []
@@ -414,7 +414,7 @@ let TransactionHelper = {
         }
 
         // Internal transaction
-        if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TomoRandomize) {
+        if (tx.to !== contractAddress.BlockSigner && tx.to !== contractAddress.TaoRandomize) {
             let internalTx = await TransactionHelper.getInternalTx(tx)
             tx.i_tx = internalTx.length
         }

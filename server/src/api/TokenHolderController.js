@@ -94,7 +94,7 @@ TokenHolderController.get('/token-holders', [
     }
 })
 
-TokenHolderController.get('/token-holders/trc21', [
+TokenHolderController.get('/token-holders/trc2', [
     check('limit').optional().isInt({ max: 50 }).withMessage('Limit is less than 50 items per page'),
     check('page').optional().isInt().withMessage('Require page is number'),
     check('address').optional().isLength({ min: 42, max: 42 }).withMessage('Account address is incorrect.'),

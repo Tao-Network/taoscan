@@ -11,7 +11,7 @@ const contractAddress = require('../contracts/contractAddress')
 const accountName = require('../contracts/accountName')
 const logger = require('../helpers/logger')
 const { check, validationResult } = require('express-validator/check')
-const TomoIssuer = require('../contracts/abi/TomoIssuer')
+const TAOISSUER = require('../contracts/abi/TaoIssuer')
 const config = require('config')
 
 const TxController = Router()
@@ -75,7 +75,7 @@ TxController.get('/txs', [
                 condition = { to: contractAddress.BlockSigner, isPending: false }
             } else if (type === 'otherTxs') {
                 total = specialAccount ? specialAccount.other : 0
-                condition = { to: { $nin: [contractAddress.BlockSigner, contractAddress.TomoRandomize] },
+                condition = { to: { $nin: [contractAddress.BlockSigner, contractAddress.TaoRandomize] },
                     isPending: false }
             } else if (type === 'pending') {
                 total = specialAccount ? specialAccount.pending : 0
@@ -273,7 +273,7 @@ TxController.get('/txs/listByType/:type', [
         params.query = { to: contractAddress.BlockSigner, isPending: false }
     } else if (type === 'normalTxs') {
         total = specialAccount ? specialAccount.other : 0
-        params.query = { to: { $nin: [contractAddress.BlockSigner, contractAddress.TomoRandomize] },
+        params.query = { to: { $nin: [contractAddress.BlockSigner, contractAddress.TaoRandomize] },
             isPending: false }
     } else if (type === 'pending') {
         total = specialAccount ? specialAccount.pending : 0
@@ -501,41 +501,41 @@ TxController.get(['/txs/:slug', '/tx/:slug'], [
         }
         tx.to_model = toModel
 
-        let trc20Txs = await db.TokenTx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
-        trc20Txs = await TokenTransactionHelper.formatTokenTransaction(trc20Txs)
-        tx.trc20Txs = trc20Txs
+        let trc1Txs = await db.TokenTx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
+        trc1Txs = await TokenTransactionHelper.formatTokenTransaction(trc1Txs)
+        tx.trc1Txs = trc1Txs
 
-        let trc21Txs = await db.TokenTrc21Tx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
-        trc21Txs = await TokenTransactionHelper.formatTokenTransaction(trc21Txs)
-        tx.trc21Txs = trc21Txs
+        let trc2Txs = await db.TokenTrc21Tx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
+        trc2Txs = await TokenTransactionHelper.formatTokenTransaction(trc2Txs)
+        tx.trc2Txs = trc2Txs
 
-        let trc21FeeFund = -1
-        if (trc21Txs.length > 0) {
+        let trc2FeeFund = -1
+        if (trc2Txs.length > 0) {
             try {
                 let web3 = await await Web3Util.getWeb3()
-                let contract = new web3.eth.Contract(TomoIssuer, config.get('TOMOISSUER'))
+                let contract = new web3.eth.Contract(TaoIssuer, config.get('TAOISSUER'))
                 let listToken = await contract.methods.tokens().call()
-                let isRegisterOnTomoIssuer = false
+                let isRegisterOnTaoIssuer = false
                 for (let i = 0; i < listToken.length; i++) {
                     if (listToken[i].toLowerCase() === tx.to.toLowerCase()) {
-                        isRegisterOnTomoIssuer = true
+                        isRegisterOnTaoIssuer = true
                         break
                     }
                 }
-                if (isRegisterOnTomoIssuer) {
-                    trc21FeeFund = await contract.methods.getTokenCapacity(tx.to).call()
+                if (isRegisterOnTaoIssuer) {
+                    trc2FeeFund = await contract.methods.getTokenCapacity(tx.to).call()
                 } else {
-                    trc21FeeFund = -1
+                    trc2FeeFund = -1
                 }
             } catch (e) {
                 logger.warn(e)
             }
         }
-        tx.trc21FeeFund = trc21FeeFund
+        tx.trc2FeeFund = trc2FeeFund
 
-        let trc721Txs = await db.TokenNftTx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
-        trc721Txs = await TokenTransactionHelper.formatTokenTransaction(trc721Txs)
-        tx.trc721Txs = trc721Txs
+        let trc3Txs = await db.TokenNftTx.find({ transactionHash: tx.hash }).maxTimeMS(20000)
+        trc3Txs = await TokenTransactionHelper.formatTokenTransaction(trc3Txs)
+        tx.trc3Txs = trc3Txs
 
         let web3 = await Web3Util.getWeb3()
         let blk = await web3.eth.getBlock('latest')
@@ -697,13 +697,13 @@ TxController.get('/txs/combine/:address', [
             blockNumber: { $lte: blockNumber }
         }).sort({ blockNumber: -1 }).limit(limit * page).lean().exec() || []
 
-        // get token trc20 tx by account
+        // get token trc1 tx by account
         const token20Txs1 = db.TokenTx.find({
             $or: [{ to: address }, { from: address }],
             blockNumber: { $lte: blockNumber }
         }).sort({ blockNumber: -1 }).limit(limit * page).lean().exec() || []
 
-        // get token trc21 tx by account
+        // get token trc2 tx by account
         const token21Txs1 = db.TokenTrc21Tx.find({
             $or: [{ to: address }, { from: address }],
             blockNumber: { $lte: blockNumber }
@@ -724,15 +724,15 @@ TxController.get('/txs/combine/:address', [
                 return tx
             }),
             (await token20Txs1).map(tx => {
-                tx.txType = 'trc20Tx'
+                tx.txType = 'trc1Tx'
                 return tx
             }),
             (await token21Txs1).map(tx => {
-                tx.txType = 'trc21Tx'
+                tx.txType = 'trc2Tx'
                 return tx
             }),
             (await token721Txs1).map(tx => {
-                tx.txType = 'trc721Tx'
+                tx.txType = 'trc3Tx'
                 return tx
             })
         ])

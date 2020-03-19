@@ -1,25 +1,25 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-exchange tomo-empty__icon"/>
-            <p class="tomo-empty__description">No transaction found</p>
+            class="tao-empty">
+            <i class="fa fa-exchange tao-empty__icon"/>
+            <p class="tao-empty__description">No transaction found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('transaction', 'transactions', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('transaction', 'transactions', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--transactions">
+            class="tao-table--transactions">
             <template
                 slot="hash"
                 slot-scope="props">
@@ -96,15 +96,15 @@
 
             <template
                 slot="value"
-                slot-scope="props">{{ formatUnit(toTomo(props.item.value)) }}</template>
+                slot-scope="props">{{ formatUnit(toTao(props.item.value)) }}</template>
 
             <template
                 slot="txFee"
                 slot-scope="props">
                 <span
                     v-b-tooltip.hover
-                    :title="formatUnit(toTomo(props.item.gasPrice * props.item.gasUsed, 18))">
-                    {{ formatUnit(toTomo(props.item.gasPrice * props.item.gasUsed, 8)) }}</span></template>
+                    :title="formatUnit(toTao(props.item.gasPrice * props.item.gasUsed, 18))">
+                    {{ formatUnit(toTao(props.item.gasPrice * props.item.gasUsed, 8)) }}</span></template>
         </table-base>
 
         <b-pagination
@@ -114,7 +114,7 @@
             :per-page="perPage"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

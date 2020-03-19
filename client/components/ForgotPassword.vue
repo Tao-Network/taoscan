@@ -2,7 +2,7 @@
     <b-modal
         ref="modalForgotPw"
         :id="modalId"
-        class="tomo-modal"
+        class="tao-modal"
         title="Password Recovery"
         ok-only
         ok-title="Submit"

@@ -1,25 +1,25 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-cube tomo-empty__icon"/>
-            <p class="tomo-empty__description">No item found</p>
+            class="tao-empty">
+            <i class="fa fa-cube tao-empty__icon"/>
+            <p class="tao-empty__description">No item found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('block', 'blocks', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('block', 'blocks', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--tx-by-account">
+            class="tao-table--tx-by-account">
             <template
                 slot="block"
                 slot-scope="props">
@@ -52,7 +52,7 @@
             :per-page="perPage"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

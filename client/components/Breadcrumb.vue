@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ol class="breadcrumb tomo-breadcrumb">
+        <ol class="breadcrumb tao-breadcrumb">
             <li
                 v-for="(item, index) in items"
                 :key="index"

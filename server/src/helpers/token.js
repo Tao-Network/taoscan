@@ -14,7 +14,7 @@ let TokenHelper = {
     }),
 
     checkTokenType: async (code) => {
-        let trc20Function = {
+        let trc1Function = {
             'totalSupply': '0x18160ddd',
             'balanceOf': '0x70a08231',
             'allowance': '0xdd62ed3e',
@@ -27,7 +27,7 @@ let TokenHelper = {
             'symbol': '0x95d89b41',
             'decimals': '0x313ce567'
         }
-        let trc721Function = {
+        let trc3Function = {
             'Transfer': '0xddf252ad',
             'Approval': '0x8c5be1e5',
             'ApprovalForAll': '0x17307eab',
@@ -43,7 +43,7 @@ let TokenHelper = {
             'supportsInterface': '0x01ffc9a7',
             'totalSupply': '0x18160ddd'
         }
-        let trc21Function = {
+        let trc2Function = {
             'totalSupply': '0x18160ddd',
             'balanceOf': '0x70a08231',
             'estimateFee': '0x127e8e4d',
@@ -62,8 +62,8 @@ let TokenHelper = {
         }
 
         let isTrc21 = true
-        for (let trc21 in trc21Function) {
-            let codeCheck = trc21Function[trc21]
+        for (let trc2 in trc2Function) {
+            let codeCheck = trc2Function[trc2]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
                 isTrc21 = false
@@ -71,12 +71,12 @@ let TokenHelper = {
             }
         }
         if (isTrc21) {
-            return 'trc21'
+            return 'trc2'
         }
 
         let isTrc20 = true
-        for (let trc20 in trc20Function) {
-            let codeCheck = trc20Function[trc20]
+        for (let trc1 in trc1Function) {
+            let codeCheck = trc1Function[trc1]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
                 isTrc20 = false
@@ -84,21 +84,21 @@ let TokenHelper = {
             }
         }
         if (isTrc20) {
-            return 'trc20'
+            return 'trc1'
         }
 
         let isTrc721 = true
-        for (let trc721 in trc721Function) {
-            let codeCheck = trc721Function[trc721]
+        for (let trc3 in trc3Function) {
+            let codeCheck = trc3Function[trc3]
             codeCheck = codeCheck.replace('0x', '')
             if (code.indexOf(codeCheck) < 0) {
-                console.log(trc721Function[trc721])
+                console.log(trc3Function[trc3])
                 isTrc721 = false
                 break
             }
         }
         if (isTrc721) {
-            return 'trc721'
+            return 'trc3'
         }
         return 'other'
     },

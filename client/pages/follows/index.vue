@@ -1,10 +1,10 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section
         v-else
-        class="tomo-body-wrapper tomo-body-wrapper--follow">
+        class="tao-body-wrapper tao-body-wrapper--follow">
         <div class="mb-4">
             <b-btn
                 v-b-modal.modalAddFollow
@@ -12,7 +12,7 @@
             <b-modal
                 id="modalAddFollow"
                 ref="modalNewAddress"
-                class="tomo-modal tomo-modal--follow"
+                class="tao-modal tao-modal--follow"
                 title="Add a new address to your follow list"
                 @keydown.native.enter="onAddNewFollowAddress"
                 @hide="resetForm">
@@ -47,51 +47,51 @@
                         class="form-control">
                 </div>
                 <p>You can monitor and receive an alert when an address
-                on your follow list receives an incoming TOMO Transaction.</p>
+                on your follow list receives an incoming TAO Transaction.</p>
                 <div class="form-group">
-                    <div class="tomo-toggle">
+                    <div class="tao-toggle">
                         <input
                             id="emailNotify"
                             v-model="formSendEmail"
                             :value="true"
                             name="sendEmail"
                             type="checkbox"
-                            class="tomo-toggle__checkbox">
+                            class="tao-toggle__checkbox">
                         <label
                             for="emailNotify"
-                            class="tomo-toggle__btn"/>
-                        <span class="tomo-toggle__label"><i class="fa fa-envelope-o mr-2"/>Email Notification</span>
+                            class="tao-toggle__btn"/>
+                        <span class="tao-toggle__label"><i class="fa fa-envelope-o mr-2"/>Email Notification</span>
                     </div>
                     <div
                         v-if="formSendEmail"
-                        class="tomo-toggle">
+                        class="tao-toggle">
                         <input
                             id="notifyReceive"
                             v-model="formNotifyReceive"
                             type="checkbox"
                             value="1"
-                            class="tomo-toggle__checkbox">
+                            class="tao-toggle__checkbox">
                         <label
                             for="notifyReceive"
-                            class="tomo-toggle__btn"/>
-                        <span class="tomo-toggle__label">
+                            class="tao-toggle__btn"/>
+                        <span class="tao-toggle__label">
                             <i class="tm-arrow-left text-danger mr-2"/>
                             Notify me on Incoming (Receive) Txns Only
                         </span>
                     </div>
                     <div
                         v-if="formSendEmail"
-                        class="tomo-toggle">
+                        class="tao-toggle">
                         <input
                             id="notifySent"
                             v-model="formNotifySent"
                             type="checkbox"
                             value="1"
-                            class="tomo-toggle__checkbox">
+                            class="tao-toggle__checkbox">
                         <label
                             for="notifySent"
-                            class="tomo-toggle__btn"/>
-                        <span class="tomo-toggle__label">
+                            class="tao-toggle__btn"/>
+                        <span class="tao-toggle__label">
                             <i class="tm-arrow-right text-success mr-2"/>
                             Notify me on Outgoing (Sent) Txns Only
                         </span>
@@ -119,20 +119,20 @@
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-chain-broken tomo-empty__icon"/>
-            <p class="tomo-empty__description">No address found</p>
+            class="tao-empty">
+            <i class="fa fa-chain-broken tao-empty__icon"/>
+            <p class="tao-empty__description">No address found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">Total {{ formatNumber(total) }} items found</p>
+            class="tao-total-items">Total {{ formatNumber(total) }} items found</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--follow">
+            class="tao-table--follow">
 
             <template
                 slot="address"
@@ -150,8 +150,8 @@
             <template
                 slot="balance"
                 slot-scope="props">
-                <span class="d-lg-none">{{ formatUnit(toTomo(props.item.addressObj.balance, 5)) }}</span>
-                <span class="d-none d-lg-block">{{ formatUnit(toTomo(props.item.addressObj.balance)) }}</span>
+                <span class="d-lg-none">{{ formatUnit(toTao(props.item.addressObj.balance, 5)) }}</span>
+                <span class="d-none d-lg-block">{{ formatUnit(toTao(props.item.addressObj.balance)) }}</span>
             </template>
 
             <template
@@ -191,7 +191,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

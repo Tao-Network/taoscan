@@ -1,25 +1,25 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-exchange tomo-empty__icon"/>
-            <p class="tomo-empty__description">No transaction found</p>
+            class="tao-empty">
+            <i class="fa fa-exchange tao-empty__icon"/>
+            <p class="tao-empty__description">No transaction found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('transaction', 'transactions', total) }} </p>
+            class="tao-total-items">{{ _nFormatNumber('transaction', 'transactions', total) }} </p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--token-tx">
+            class="tao-table--token-tx">
             <template
                 slot="transactionHash"
                 slot-scope="props">
@@ -59,7 +59,7 @@
                     class="text-truncate">{{ props.item.from }}</span>
                 <nuxt-link
                     v-else
-                    :to="{name: 'tokens-slug-trc21-holder',
+                    :to="{name: 'tokens-slug-trc2-holder',
                           params: {slug: props.item.address, holder: props.item.from}}"
                     class="text-truncate">{{ props.item.from }}</nuxt-link>
             </template>
@@ -81,7 +81,7 @@
                         class="text-truncate">{{ props.item.to }}</span>
                     <nuxt-link
                         v-else
-                        :to="{name: 'tokens-slug-trc21-holder',
+                        :to="{name: 'tokens-slug-trc2-holder',
                               params: {slug: props.item.address, holder: props.item.to}}"
                         class="text-truncate">{{ props.item.to }}</nuxt-link>
                 </div>
@@ -102,7 +102,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>
@@ -179,7 +179,7 @@ export default {
             }
 
             let query = this.serializeQuery(params)
-            let { data } = await this.$axios.get('/api/token-txs/trc21' + '?' + query)
+            let { data } = await this.$axios.get('/api/token-txs/trc2' + '?' + query)
             self.items = data.items
             self.total = data.total
             self.pages = data.pages

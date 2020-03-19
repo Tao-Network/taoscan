@@ -1,4 +1,4 @@
-.tomo-card {
+.tao-card {
   border: none;
   border-radius: 10px;
   box-shadow: 8px 8px 40px 0 rgba(0, 0, 0, .07);
@@ -201,13 +201,13 @@
     margin-bottom: 30px;
   }
 
-  .tomo-qrcode .btn.code-actions__copy {
+  .tao-qrcode .btn.code-actions__copy {
     box-shadow: none;
     margin-bottom: 5px;
   }
 }
 
-.tomo-card--transaction .tomo-readmore--is-open {
+.tao-card--transaction .tao-readmore--is-open {
   width: 60%;
 
   @include media-breakpoint-up(sm) {
@@ -215,7 +215,7 @@
   }
 }
 
-.tomo-card--transaction .tomo-card__table {
+.tao-card--transaction .tao-card__table {
 
   .text-truncate {
     max-width: 14rem;
@@ -230,19 +230,19 @@
   }
 }
 
-.tomo-card--address {
+.tao-card--address {
 
-  .tomo-card__headline {
+  .tao-card__headline {
     @include media-breakpoint-up(xl) {
       max-width: 100%;
     }
 
-    &--is-contract .tomo-readmore {
+    &--is-contract .tao-readmore {
       color: $color-text;
     }
   }
 
-  .tomo-card__body {
+  .tao-card__body {
     @include media-breakpoint-up(lg) {
       display: grid;
       grid-template-columns: 70% 30%;
@@ -250,7 +250,7 @@
     }
   }
 
-  .tomo-card__table tr {
+  .tao-card__table tr {
 
     @include media-breakpoint-up(md) {
       grid-template-columns: 30% 70%;
@@ -262,16 +262,16 @@
   }
 }
 
-.tomo-card--verify {
+.tao-card--verify {
 
   .text-danger {
     margin-top: 10px;
   }
 }
 
-.tomo-card--token {
+.tao-card--token {
 
-  .tomo-card__table {
+  .tao-card__table {
     @include media-breakpoint-up(2xl) {
       width: 100%;
     }
@@ -284,7 +284,7 @@
     }
   }
 
-  .tomo-card__table tr {
+  .tao-card__table tr {
     grid-gap: 0 15px;
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -295,7 +295,7 @@
     }
   }
 
-  .tomo-card__table td:first-child {
+  .tao-card__table td:first-child {
     text-align: left;
   }
 
@@ -311,17 +311,17 @@
   }
 }
 
-.tomo-card--block {
+.tao-card--block {
 
-  .tomo-card__headline:before {
+  .tao-card__headline:before {
     content: url('~/assets/img/block.svg');
   }
 }
 
 
-.tomo-card--address {
+.tao-card--address {
 
-  .tomo-card__headline:before {
+  .tao-card__headline:before {
     content: url('~/assets/img/address.svg');
   }
 }

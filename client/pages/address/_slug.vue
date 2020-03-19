@@ -1,13 +1,13 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
-        <div class="card tomo-card tomo-card--address">
-            <div class="tomo-card__header">
+        <div class="card tao-card tao-card--address">
+            <div class="tao-card__header">
                 <h3
-                    :class="`tomo-card__headline
-                    ${(address && address.isContract ? ' tomo-card__headline--is-contract' : '')}`">
+                    :class="`tao-card__headline
+                    ${(address && address.isContract ? ' tao-card__headline--is-contract' : '')}`">
                     <span v-if="address && address.isContract">Contract: </span>
                     <read-more
                         :text="address.hash"
@@ -23,8 +23,8 @@
                     <span class="d-none d-xl-inline-block">{{ address.hash }}</span>
                 </h3>
             </div>
-            <div class="tomo-card__body">
-                <table class="tomo-card__table">
+            <div class="tao-card__body">
+                <table class="tao-card__table">
                     <tbody>
                         <tr v-if="address.accountName">
                             <td>Account Name</td>
@@ -33,18 +33,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>TOMO Balance</td>
+                            <td>TAO Balance</td>
                             <td>
-                                <span>{{ formatUnit(toTomo(address.balance, 18)) }}</span>
+                                <span>{{ formatUnit(toTao(address.balance, 18)) }}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td>TOMO USD Value</td>
+                            <td>TAO USD Value</td>
                             <td>
-                                <span>{{ formatNumber(usdPrice * toTomoNumber(address.balance)) }} (price from
+                                <span>{{ formatNumber(usdPrice * toTaoNumber(address.balance)) }} (price from
                                     <a
                                         target="_blank"
-                                        href="https://www.coingecko.com/en/coins/tomochain">CoinGecko</a>)</span>
+                                        href="https://www.coingecko.com/en/coins/taoblockchain">CoinGecko</a>)</span>
                             </td>
                         </tr>
                         <tr>
@@ -107,7 +107,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="text-center text-lg-right tomo-qrcode">
+                <div class="text-center text-lg-right tao-qrcode">
                     <div>
                         <button
                             v-clipboard="address.hash"
@@ -130,7 +130,7 @@
         <b-tabs
             ref="allTabs"
             v-model="tabIndex"
-            class="tomo-tabs"
+            class="tao-tabs"
             @input="onSwitchTab">
             <!--:title="'In Transactions (' + formatNumber(inTxsCount) + ')'"-->
             <b-tab
@@ -179,35 +179,35 @@
             <!--:title="'Token Holding (' + formatNumber(tokensCount) + ')'"-->
             <b-tab
                 v-if="address && address.hasTrc20"
-                id="trc20Holding"
-                title="TRC20 Holding"
-                href="#trc20Holding">
+                id="trc1Holding"
+                title="TRC1 Holding"
+                href="#trc1Holding">
                 <table-tokens-by-account
                     :holder="hash"
-                    :token_type="'trc20'"
-                    :parent="'trc20Holding'"
+                    :token_type="'trc1'"
+                    :parent="'trc1Holding'"
                     :page="this"/>
             </b-tab>
             <b-tab
                 v-if="address && address.hasTrc21"
-                id="trc21Holding"
-                title="TRC21 Holding"
-                href="#trc21Holding">
+                id="trc2Holding"
+                title="TRC2 Holding"
+                href="#trc2Holding">
                 <table-tokens-by-account
                     :holder="hash"
-                    :token_type="'trc21'"
-                    :parent="'trc21Holding'"
+                    :token_type="'trc2'"
+                    :parent="'trc2Holding'"
                     :page="this"/>
             </b-tab>
             <b-tab
                 v-if="address && address.hasTrc721"
-                id="trc721Inventory"
-                title="TRC721 Inventory"
-                href="#trc721Inventory">
+                id="trc3Inventory"
+                title="TRC3 Inventory"
+                href="#trc3Inventory">
                 <table-tokens-by-account
                     :holder="hash"
-                    :token_type="'trc721'"
-                    :parent="'trc721Inventory'"
+                    :token_type="'trc3'"
+                    :parent="'trc3Inventory'"
                     :page="this"/>
             </b-tab>
             <b-tab
@@ -314,9 +314,9 @@ export default {
         },
         codemirror () {
             return [
-                this.$refs.tomoCmSourceCode.codemirror,
-                this.$refs.tomoCmAbiCode.codemirror,
-                this.$refs.tomoCmCode.codemirror
+                this.$refs.taoCmSourceCode.codemirror,
+                this.$refs.taoCmAbiCode.codemirror,
+                this.$refs.taoCmCode.codemirror
             ]
         },
         hashTab () {

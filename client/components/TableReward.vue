@@ -1,25 +1,25 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
 
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-cube tomo-empty__icon"/>
-            <p class="tomo-empty__description">No reward found</p>
+            class="tao-empty">
+            <i class="fa fa-cube tao-empty__icon"/>
+            <p class="tao-empty__description">No reward found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('reward', 'rewards', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('reward', 'rewards', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--reward">
+            class="tao-table--reward">
             <template
                 slot="epoch"
                 slot-scope="props">
@@ -79,7 +79,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>

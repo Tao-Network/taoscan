@@ -24,40 +24,40 @@ jobs:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/tomoscan-server -f Dockerfile.server .
-        - docker build -t tomochain/tomoscan-client -f Dockerfile.client .
+        - docker build -t taoblockchain/taoscan-server -f Dockerfile.server .
+        - docker build -t taoblockchain/taoscan-client -f Dockerfile.client .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag tomochain/tomoscan-server tomochain/tomoscan-server:latest
-        - docker push tomochain/tomoscan-server:latest
-        - docker tag tomochain/tomoscan-server tomochain/tomoscan-server:$TRAVIS_BUILD_ID
-        - docker push tomochain/tomoscan-server:$TRAVIS_BUILD_ID
-        - docker tag tomochain/tomoscan-client tomochain/tomoscan-client:latest
-        - docker push tomochain/tomoscan-client:latest
-        - docker tag tomochain/tomoscan-client tomochain/tomoscan-client:$TRAVIS_BUILD_ID
-        - docker push tomochain/tomoscan-client:$TRAVIS_BUILD_ID
+        - docker tag taoblockchain/taoscan-server taoblockchain/taoscan-server:latest
+        - docker push taoblockchain/taoscan-server:latest
+        - docker tag taoblockchain/taoscan-server taoblockchain/taoscan-server:$TRAVIS_BUILD_ID
+        - docker push taoblockchain/taoscan-server:$TRAVIS_BUILD_ID
+        - docker tag taoblockchain/taoscan-client taoblockchain/taoscan-client:latest
+        - docker push taoblockchain/taoscan-client:latest
+        - docker tag taoblockchain/taoscan-client taoblockchain/taoscan-client:$TRAVIS_BUILD_ID
+        - docker push taoblockchain/taoscan-client:$TRAVIS_BUILD_ID
 
     - stage: Build and push image (tagged)
       services:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/tomoscan-server -f Dockerfile.server .
-        - docker build -t tomochain/tomoscan-client -f Dockerfile.client .
+        - docker build -t taoblockchain/taoscan-server -f Dockerfile.server .
+        - docker build -t taoblockchain/taoscan-client -f Dockerfile.client .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag tomochain/tomoscan-server tomochain/tomoscan-server:latest
-        - docker push tomochain/tomoscan-server:latest
-        - docker tag tomochain/tomoscan-server tomochain/tomoscan-server:testnet
-        - docker push tomochain/tomoscan-server:testnet
-        - docker tag tomochain/tomoscan-server tomochain/tomoscan-server:$TRAVIS_TAG
-        - docker push tomochain/tomoscan-server:$TRAVIS_TAG
-        - docker tag tomochain/tomoscan-client tomochain/tomoscan-client:latest
-        - docker push tomochain/tomoscan-client:latest
-        - docker tag tomochain/tomoscan-client tomochain/tomoscan-client:testnet
-        - docker push tomochain/tomoscan-client:testnet
-        - docker tag tomochain/tomoscan-client tomochain/tomoscan-client:$TRAVIS_TAG
-        - docker push tomochain/tomoscan-client:$TRAVIS_TAG
+        - docker tag taoblockchain/taoscan-server taoblockchain/taoscan-server:latest
+        - docker push taoblockchain/taoscan-server:latest
+        - docker tag taoblockchain/taoscan-server taoblockchain/taoscan-server:testnet
+        - docker push taoblockchain/taoscan-server:testnet
+        - docker tag taoblockchain/taoscan-server taoblockchain/taoscan-server:$TRAVIS_TAG
+        - docker push taoblockchain/taoscan-server:$TRAVIS_TAG
+        - docker tag taoblockchain/taoscan-client taoblockchain/taoscan-client:latest
+        - docker push taoblockchain/taoscan-client:latest
+        - docker tag taoblockchain/taoscan-client taoblockchain/taoscan-client:testnet
+        - docker push taoblockchain/taoscan-client:testnet
+        - docker tag taoblockchain/taoscan-client taoblockchain/taoscan-client:$TRAVIS_TAG
+        - docker push taoblockchain/taoscan-client:$TRAVIS_TAG
 
     - stage: Deploy in devnet
       install: skip
@@ -68,14 +68,14 @@ jobs:
         - echo -e "Host $DEVNET_SSH_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
         - ssh-add ./travis.pem
       script:
-        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image tomochain/tomoscan-client:latest devnet-main_tomoscan 1> /dev/null
-        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image tomochain/tomoscan-server:latest devnet-main_tomoscan_crawler 1> /dev/null
-        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image tomochain/tomoscan-server:latest devnet-main_tomoscan_server 1> /dev/null
-        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image tomochain/tomoscan-server:latest devnet-main_tomoscan_producer 1> /dev/null
+        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image taoblockchain/taoscan-client:latest devnet-main_taoscan 1> /dev/null
+        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image taoblockchain/taoscan-server:latest devnet-main_taoscan_crawler 1> /dev/null
+        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image taoblockchain/taoscan-server:latest devnet-main_taoscan_server 1> /dev/null
+        - ssh -i ./travis.pem -l $DEVNET_SSH_USER $DEVNET_SSH_IP docker service update --image taoblockchain/taoscan-server:latest devnet-main_taoscan_producer 1> /dev/null
       after_success:
-        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[devnet] Deployment succeeded\",\"pretext\":\"\",\"color\":\"good\",\"fields\":[{\"title\":\"[devnet] TomoScan\",\"value\":\"Deployment succeeded.\",\"short\":true}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
+        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[devnet] Deployment succeeded\",\"pretext\":\"\",\"color\":\"good\",\"fields\":[{\"title\":\"[devnet] TaoScan\",\"value\":\"Deployment succeeded.\",\"short\":true}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
       after_failure:
-        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[devnet] Deployment failed\",\"pretext\":\"\",\"color\":\"danger\",\"fields\":[{\"title\":\"[devnet] TomoScan\",\"value\":\"Deployment failed.\",\"short\":false}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
+        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[devnet] Deployment failed\",\"pretext\":\"\",\"color\":\"danger\",\"fields\":[{\"title\":\"[devnet] TaoScan\",\"value\":\"Deployment failed.\",\"short\":false}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
 
     - stage: Deploy in testnet
       install: skip
@@ -86,25 +86,25 @@ jobs:
         - echo -e "Host $TESTNET_SSH_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
         - ssh-add ./travis.pem
       script:
-        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image tomochain/tomoscan-client:testnet testnet_tomoscan 1> /dev/null
-        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image tomochain/tomoscan-server:testnet testnet_tomoscan_crawler 1> /dev/null
-        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image tomochain/tomoscan-server:testnet testnet_tomoscan_server 1> /dev/null
-        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image tomochain/tomoscan-server:testnet testnet_tomoscan_producer 1> /dev/null
+        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image taoblockchain/taoscan-client:testnet testnet_taoscan 1> /dev/null
+        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image taoblockchain/taoscan-server:testnet testnet_taoscan_crawler 1> /dev/null
+        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image taoblockchain/taoscan-server:testnet testnet_taoscan_server 1> /dev/null
+        - ssh -i ./travis.pem -l $TESTNET_SSH_USER $TESTNET_SSH_IP docker service update --image taoblockchain/taoscan-server:testnet testnet_taoscan_producer 1> /dev/null
       after_success:
-        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[testnet] Deployment succeeded\",\"pretext\":\"\",\"color\":\"good\",\"fields\":[{\"title\":\"[testnet] TomoScan\",\"value\":\"Deployment succeeded.\",\"short\":true}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
+        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[testnet] Deployment succeeded\",\"pretext\":\"\",\"color\":\"good\",\"fields\":[{\"title\":\"[testnet] TaoScan\",\"value\":\"Deployment succeeded.\",\"short\":true}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
       after_failure:
-        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[testnet] Deployment failed\",\"pretext\":\"\",\"color\":\"danger\",\"fields\":[{\"title\":\"[testnet] TomoScan\",\"value\":\"Deployment failed.\",\"short\":false}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
+        -  'curl -X POST --data-urlencode "payload={\"channel\": \"#deployments\", \"username\": \"Travis\", \"attachments\":[{\"fallback\":\"[testnet] Deployment failed\",\"pretext\":\"\",\"color\":\"danger\",\"fields\":[{\"title\":\"[testnet] TaoScan\",\"value\":\"Deployment failed.\",\"short\":false}]}], \"icon_emoji\": \":male-construction-worker:\"}" $SLACK_DEPLOY_URL'
 
 stages:
   - name: Lint
 #  - name: Audit
   - name: Tests
   - name: Build and push image
-    if: type != pull_request AND branch = master AND tag IS blank AND repo = tomochain/tomoscan
+    if: type != pull_request AND branch = master AND tag IS blank AND repo = taoblockchain/taoscan
   - name: Build and push image (tagged)
-    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = tomochain/tomoscan
+    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = taoblockchain/taoscan
 #  - name: Deploy in devnet
-#    if: type != pull_request AND branch = master AND repo = tomochain/tomoscan
+#    if: type != pull_request AND branch = master AND repo = taoblockchain/taoscan
   - name: Deploy in testnet
-    if: type != pull_request AND branch = master AND repo = tomochain/tomoscan
-#    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = tomochain/tomoscan
+    if: type != pull_request AND branch = master AND repo = taoblockchain/taoscan
+#    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = taoblockchain/taoscan

@@ -6,7 +6,7 @@ const logger = require('../helpers/logger')
 const redisHelper = require('../helpers/redis')
 
 const SettingController = Router()
-var tomoUsd = {}
+var taoUsd = {}
 
 SettingController.get('/setting', async (req, res) => {
     try {
@@ -31,22 +31,22 @@ SettingController.get('/setting', async (req, res) => {
 
 SettingController.get('/setting/usd', async (req, res) => {
     try {
-        let cache = await redisHelper.get('tomo-price')
+        let cache = await redisHelper.get('tao-price')
         if (cache !== null) {
             let r = JSON.parse(cache)
-            logger.info('load tomo price from cache')
+            logger.info('load tao price from cache')
             return res.json(r)
         }
-        let url = 'https://api.coingecko.com/api/v3/simple/price?ids=tomochain&vs_currencies=usd'
+        let url = 'https://api.coingecko.com/api/v3/simple/price?ids=taoblockchain&vs_currencies=usd'
 
         let { data } = await axios.get(url, { timeout: 5000 })
 
-        tomoUsd = data
-        await redisHelper.set('tomo-price', JSON.stringify(data), 10 * 60)
+        taoUsd = data
+        await redisHelper.set('tao-price', JSON.stringify(data), 10 * 60)
     } catch (e) {
         logger.warn(e)
     }
-    return res.json(tomoUsd)
+    return res.json(taoUsd)
 })
 
 module.exports = SettingController

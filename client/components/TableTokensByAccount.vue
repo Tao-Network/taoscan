@@ -1,42 +1,42 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-exchange tomo-empty__icon"/>
-            <p class="tomo-empty__description">No token found</p>
+            class="tao-empty">
+            <i class="fa fa-exchange tao-empty__icon"/>
+            <p class="tao-empty__description">No token found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('token', 'tokens', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('token', 'tokens', total) }}</p>
 
         <table-base
             v-if="total > 0"
             :fields="fields"
             :items="items"
-            class="tomo-table--tokens-by-account">
+            class="tao-table--tokens-by-account">
 
             <template
                 slot="hash"
                 slot-scope="props">
                 <nuxt-link
-                    v-if="token_type === 'trc20'"
+                    v-if="token_type === 'trc1'"
                     :class="props.item.tokenObj ? '' : 'text-truncate'"
-                    :to="{name: 'tokens-slug-trc20-holder', params: {slug: props.item.token, holder: holder}}">
+                    :to="{name: 'tokens-slug-trc1-holder', params: {slug: props.item.token, holder: holder}}">
                     {{ props.item.tokenObj ? props.item.tokenObj.name : props.item.token }}</nuxt-link>
                 <nuxt-link
-                    v-if="token_type === 'trc21'"
+                    v-if="token_type === 'trc2'"
                     :class="props.item.tokenObj ? '' : 'text-truncate'"
-                    :to="{name: 'tokens-slug-trc21-holder', params: {slug: props.item.token, holder: holder}}">
+                    :to="{name: 'tokens-slug-trc2-holder', params: {slug: props.item.token, holder: holder}}">
                     {{ props.item.tokenObj ? props.item.tokenObj.name : props.item.token }}</nuxt-link>
                 <nuxt-link
-                    v-if="token_type === 'trc721'"
+                    v-if="token_type === 'trc3'"
                     :class="props.item.tokenObj ? '' : 'text-truncate'"
-                    :to="{name: 'tokens-slug-trc721-holder', params: {slug: props.item.token, holder: holder}}">
+                    :to="{name: 'tokens-slug-trc3-holder', params: {slug: props.item.token, holder: holder}}">
                     {{ props.item.tokenObj ? props.item.tokenObj.name : props.item.token }}</nuxt-link>
             </template>
 
@@ -44,11 +44,11 @@
                 slot="quantity"
                 slot-scope="props">
                 <span
-                    v-if="token_type === 'trc20' || token_type === 'trc21'">
+                    v-if="token_type === 'trc1' || token_type === 'trc2'">
                     {{ formatUnit(toTokenQuantity(props.item.quantity, props.item.tokenObj.decimals),
                                   props.item.tokenObj.symbol) }}</span>
                 <span
-                    v-if="token_type === 'trc721'">
+                    v-if="token_type === 'trc3'">
                     {{ props.item.tokenId }}</span>
             </template>
 
@@ -62,7 +62,7 @@
             :number-of-pages="pages"
             :limit="7"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
             @change="onChangePaginate"
         />
     </section>
@@ -99,7 +99,7 @@ export default {
     data: () => ({
         fields: {
             hash: { label: 'Token' },
-            quantity: { label: self.token_type === 'trc721' ? 'Token ID' : 'Quantity' }
+            quantity: { label: self.token_type === 'trc3' ? 'Token ID' : 'Quantity' }
         },
         loading: true,
         total: 0,

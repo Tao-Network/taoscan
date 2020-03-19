@@ -1,10 +1,10 @@
-# TomoChain Explorer - Tomoscan
+# Tao Explorer - Taoscan
 
-[![Join the chat at https://gitter.im/tomochain/tomoscan](https://badges.gitter.im/tomochain/tomoscan.svg)](https://gitter.im/tomochain/tomoscan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/taoblockchain/taoscan](https://badges.gitter.im/taoblockchain/taoscan.svg)](https://gitter.im/taoblockchain/taoscan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Tomoscan is a BlockExplorer for **TomoChain**, built with VueJS, Nuxt and MongoDB. Tomoscan allows you to explore and search the **TomoChain** for transactions, addresses, tokens, prices and other activities taking place on **TomoChain**.
+Taoscan is a BlockExplorer for **Tao**, built with VueJS, Nuxt and MongoDB. Taoscan allows you to explore and search the **Tao** for transactions, addresses, tokens, prices and other activities taking place on **Tao**.
 
-A demo instance connected to the **TomoChain testnet** is available at [scan.testnet.tomochain.com](https://scan.testnet.tomochain.com/).
+A demo instance connected to the **Tao testnet** is available at [scan.testnet.tao.network](https://scan.testnet.tao.network/).
 
 ## Current Features
 - Browse blocks, transactions, accounts and contracts
@@ -13,11 +13,11 @@ A demo instance connected to the **TomoChain testnet** is available at [scan.tes
 - Display the current state of verified contracts
 - Responsive layout
 
-Missing a feature? Please request it by creating a new [Issue](https://github.com/tomochain/tomoscan/issues).
+Missing a feature? Please request it by creating a new [Issue](https://github.com/taoblockchain/taoscan/issues).
 
 ## Usage notes
 
-The explorer is still under heavy development, if you find any problems please create [an issue](https://github.com/tomochain/tomoscan/issues) or prepare [a pull request](https://github.com/tomochain/tomoscan/pulls).
+The explorer is still under heavy development, if you find any problems please create [an issue](https://github.com/taoblockchain/taoscan/issues) or prepare [a pull request](https://github.com/taoblockchain/taoscan/pulls).
 
 ## Getting started
 

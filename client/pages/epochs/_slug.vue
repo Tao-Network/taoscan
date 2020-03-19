@@ -1,13 +1,13 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
-        <div class="card tomo-card tomo-card--block">
-            <div class="tomo-card__header">
+        <div class="card tao-card tao-card--block">
+            <div class="tao-card__header">
                 <h3
                     v-if="epoch"
-                    class="tomo-card__headline">Epoch
+                    class="tao-card__headline">Epoch
                     <span class="d-none d-lg-inline-block headline__block-block">#{{ epochNumber }}</span>
                 </h3>
                 <div
@@ -30,10 +30,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tomo-card__body">
+            <div class="tao-card__body">
                 <table
                     v-if="epoch"
-                    class="tomo-card__table">
+                    class="tao-card__table">
                     <tbody>
                         <tr>
                             <td>Epoch</td>
@@ -92,7 +92,7 @@
         <b-tabs
             ref="allTabs"
             v-model="tabIndex"
-            class="tomo-tabs"
+            class="tao-tabs"
             @input="onSwitchTab">
             <!--:title="'Reward Voter (' + formatNumber(voterCount) + ')'"-->
             <b-tab
@@ -122,17 +122,17 @@
 
                 <div
                     v-if="epoch.slashedNode.length === 0"
-                    class="tomo-empty">
-                    <i class="fa fa-cube tomo-empty__icon"/>
-                    <p class="tomo-empty__description">No slashed node</p>
+                    class="tao-empty">
+                    <i class="fa fa-cube tao-empty__icon"/>
+                    <p class="tao-empty__description">No slashed node</p>
                 </div>
 
                 <p
                     v-if="epoch.slashedNode.length > 0"
-                    class="tomo-total-items">{{ _nFormatNumber('node', 'nodes', epoch.slashedNode.length) }}</p>
+                    class="tao-total-items">{{ _nFormatNumber('node', 'nodes', epoch.slashedNode.length) }}</p>
                 <table
                     v-if="epoch.slashedNode.length > 0"
-                    class="tomo-table">
+                    class="tao-table">
                     <thead>
                         <tr><th>Coinbase</th></tr>
                     </thead>

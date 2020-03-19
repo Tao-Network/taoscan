@@ -15,7 +15,7 @@
             <div
                 style="margin-top: 10px">
                 <strong>
-                    Method 2(easier): Using QR code scanning feature in TomoWallet to sign
+                    Method 2(easier): Using QR code scanning feature in TaoWallet to sign
                 </strong>
             </div>
             <div
@@ -137,7 +137,7 @@ export default {
         self.message = data.message
         self.messId = data.id
 
-        self.qrCode = encodeURI('tomochain:sign?message=' + data.message + '&' +
+        self.qrCode = encodeURI('taoblockchain:sign?message=' + data.message + '&' +
             'submitURL=' + data.url + data.id)
 
         if (self.processingMess) {

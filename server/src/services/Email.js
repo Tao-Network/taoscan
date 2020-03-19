@@ -11,7 +11,7 @@ class EmailService {
             return false
         }
 
-        return this.send('register.html', user.email, 'Welcome to TomoScan', {
+        return this.send('register.html', user.email, 'Welcome to TaoScan', {
             name: user.email
         })
     }
@@ -21,9 +21,9 @@ class EmailService {
 
         let subject = ''
         if (type === 'received') {
-            subject = 'TOMO received at ' + address
+            subject = 'TAO received at ' + address
         } else {
-            subject = 'TOMO sent at ' + address
+            subject = 'TAO sent at ' + address
         }
 
         return this.send('follow.html', user.email, subject, {
@@ -44,7 +44,7 @@ class EmailService {
         let body = format(stringTemplate, params)
         const msg = {
             to: 'khaihkd@gmail.com',
-            from: 'admin@tomochain.com',
+            from: 'admin@tao.network',
             subject: subject,
             html: body
         }

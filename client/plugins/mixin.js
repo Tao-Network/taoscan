@@ -51,7 +51,7 @@ const mixin = {
             return str + str2
         },
 
-        toTomo: (wei) => {
+        toTao: (wei) => {
             if (isNaN(wei)) {
                 return '0'
             }
@@ -91,7 +91,7 @@ const mixin = {
             return mixin.methods.formatNumber(weiNumber)
         },
 
-        toTomoNumber: (wei) => {
+        toTaoNumber: (wei) => {
             BigNumber.config({ EXPONENTIAL_AT: [-100, 100] })
 
             let weiNumber = new BigNumber(wei)
@@ -197,12 +197,12 @@ const mixin = {
             if (filter) {
                 let search = filter.trim()
                 let to
-                if (tokenType === 'trc20') {
-                    to = { name: 'tokens-slug-trc20-holder', params: { slug: this.hash, holder: search } }
-                } else if (tokenType === 'trc721') {
-                    to = { name: 'tokens-slug-trc721-holder', params: { slug: this.hash, holder: search } }
-                } else if (tokenType === 'trc21') {
-                    to = { name: 'tokens-slug-trc21-holder', params: { slug: this.hash, holder: search } }
+                if (tokenType === 'trc1') {
+                    to = { name: 'tokens-slug-trc1-holder', params: { slug: this.hash, holder: search } }
+                } else if (tokenType === 'trc3') {
+                    to = { name: 'tokens-slug-trc3-holder', params: { slug: this.hash, holder: search } }
+                } else if (tokenType === 'trc2') {
+                    to = { name: 'tokens-slug-trc2-holder', params: { slug: this.hash, holder: search } }
                 }
                 return this.$router.push(to)
             }

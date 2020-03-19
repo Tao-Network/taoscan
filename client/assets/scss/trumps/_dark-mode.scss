@@ -89,7 +89,7 @@ body.dark-mode {
 }
 
 // Header
-body.dark-mode .tomo-nav {
+body.dark-mode .tao-nav {
     background-image: linear-gradient(-135deg,#373658,#40406a);
 
     .nav-item {
@@ -148,7 +148,7 @@ body.dark-mode .tomo-nav {
         }
     }
 
-    .tomo-nav__toggle {
+    .tao-nav__toggle {
         path {
             stroke: $color-text-dark;
         }
@@ -167,7 +167,7 @@ body.dark-mode .search-form {
 }
 
 // Breadcrumbs
-body.dark-mode .breadcrumb.tomo-breadcrumb {
+body.dark-mode .breadcrumb.tao-breadcrumb {
 
     a {
         color: $color-text-dark-alt;
@@ -183,7 +183,7 @@ body.dark-mode .breadcrumb.tomo-breadcrumb {
 }
 
 // Table
-body.dark-mode .tomo-table {
+body.dark-mode .tao-table {
     
     thead tr {
         color: $color-text-dark;
@@ -207,7 +207,7 @@ body.dark-mode .tomo-table {
     }
 }
 
-body.dark-mode .tomo-table--verified-contract {
+body.dark-mode .tao-table--verified-contract {
 
     tbody {
         background-color: transparent;
@@ -223,7 +223,7 @@ body.dark-mode .tomo-table--verified-contract {
     }
 }
 
-body.dark-mode .tomo-contract-info {
+body.dark-mode .tao-contract-info {
 
     tr {
         border-bottom-color: $color-text-dark;
@@ -243,7 +243,7 @@ body.dark-mode .tomo-contract-info {
 }
 
 // Footer
-body.dark-mode .tomo-footer  {
+body.dark-mode .tao-footer  {
     color: $color-text-dark;
 
     &__copyright {
@@ -269,7 +269,7 @@ body.dark-mode .tomo-footer  {
 }
 
 // Modal
-body.dark-mode .tomo-modal {
+body.dark-mode .tao-modal {
 
     .modal-header .close {
         color: #7573a8;
@@ -304,8 +304,8 @@ body.dark-mode .tomo-modal {
     }
 }
 
-// Tomo Stat
-body.dark-mode .tomo-stat .tomo-stat__item a {
+// Tao Stat
+body.dark-mode .tao-stat .tao-stat__item a {
     color: $color-text-dark-alt;
 
     &:hover {
@@ -314,12 +314,12 @@ body.dark-mode .tomo-stat .tomo-stat__item a {
 }
 
 // Headline
-body.dark-mode .tomo-headline {
+body.dark-mode .tao-headline {
     color: $color-text-white-dark;
 }
 
 // Tabs
-body.dark-mode .tomo-tabs {
+body.dark-mode .tao-tabs {
 
     .nav-link {
         border-bottom-color: #505078;
@@ -333,7 +333,7 @@ body.dark-mode .tomo-tabs {
 }
 
 // Card
-body.dark-mode .tomo-card {
+body.dark-mode .tao-card {
     background-image: linear-gradient(-135deg,#2d2d4a,#40406a,#1d1e31);
     background-size: 400% 400%;
 
@@ -359,7 +359,7 @@ body.dark-mode .tomo-card {
         }
     }
 
-    .tomo-qrcode .btn.code-actions__copy {
+    .tao-qrcode .btn.code-actions__copy {
         color: $color-text-white-dark;
     }
 
@@ -371,7 +371,7 @@ body.dark-mode .tomo-card {
 // Custom CSS
 body.dark-mode {
 
-    .tomo-total-items {
+    .tao-total-items {
         color: $color-text-white-dark;
     }
 
@@ -531,7 +531,7 @@ body.dark-mode .vue-codemirror {
 }
 
 // Pagination
-body.dark-mode .tomo-pagination {
+body.dark-mode .tao-pagination {
     
     .page-item {
 
@@ -580,10 +580,10 @@ body.dark-mode .code-actions .btn {
 }
 
 // Token Info
-body.dark-mode .tomo-card--token {
+body.dark-mode .tao-card--token {
     background-image: linear-gradient(-135deg,#373658,#40406a);
 
-    .tomo-card__table tr {
+    .tao-card__table tr {
         border-bottom-color: #505078;
     }
 

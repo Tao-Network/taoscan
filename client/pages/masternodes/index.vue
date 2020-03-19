@@ -1,18 +1,18 @@
 <template>
     <div
         v-if="loading"
-        :class="(loading ? 'tomo-loading tomo-loading--full' : '')"/>
+        :class="(loading ? 'tao-loading tao-loading--full' : '')"/>
     <section v-else>
         <div
             v-if="total == 0"
-            class="tomo-empty">
-            <i class="fa fa-user-secret tomo-empty__icon"/>
-            <p class="tomo-empty__description">No masternode found</p>
+            class="tao-empty">
+            <i class="fa fa-user-secret tao-empty__icon"/>
+            <p class="tao-empty__description">No masternode found</p>
         </div>
 
         <p
             v-if="total > 0"
-            class="tomo-total-items">{{ _nFormatNumber('MasterNode', 'MasterNodes', total) }}</p>
+            class="tao-total-items">{{ _nFormatNumber('MasterNode', 'MasterNodes', total) }}</p>
 
         <b-table
             v-if="total > 0"
@@ -22,7 +22,7 @@
             :current-page="currentPage"
             :show-empty="true"
             empty-text="There are no masternodes to show"
-            class="tomo-table tomo-table--masternode"
+            class="tao-table tao-table--masternode"
             stacked="md">
 
             <template
@@ -67,7 +67,7 @@
             :limit="7"
             :value="currentPage"
             align="center"
-            class="tomo-pagination"
+            class="tao-pagination"
         />
     </section>
 </template>
