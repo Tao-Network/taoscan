@@ -97,8 +97,8 @@
                             id="dark-mode-checkbox"
                             :checked="darkMode"
                             type="checkbox"
-                            @click="toggleDarkMode"
-                            checked>
+                            checked
+                            @click="toggleDarkMode">
                         <div class="toggle-switch">&nbsp;</div>
                         <div class="toggle-bg">&nbsp;</div>
                     </div>
