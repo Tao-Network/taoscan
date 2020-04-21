@@ -65,7 +65,7 @@
     "twitter": "^1.7.1",
     "url-join": "^4.0.0",
     "uuid": "^3.3.2",
-    "web3": "^1.0.0-beta.46",
+    "web3": "^1.2.6",
     "winston": "^3.1.0"
   },
   "devDependencies": {
@@ -81,6 +81,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.5.0",
     "eslint-utils": "^1.4.2",
+    "fsevents": "^2.1.2",
     "inquirer": "^6.2.0",
     "mixin-deep": "^2.0.1",
     "nodemon": "^1.9.2",
