@@ -27,5 +27,3 @@ RUN apk del deps
 EXPOSE 3333
 
 ENTRYPOINT ["./entrypoint.sh"]
-
-CMD ["start"]

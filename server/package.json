@@ -7,9 +7,10 @@
     "server-dev": "nodemon --inspect -w src --exec node src ",
     "crawl-dev": "nodemon --exec node ./src/crawl.js",
     "subscribe-pending-tx-dev": "nodemon --exec node ./src/subscribePendingTx.js",
-    "start": "nodemon --exec node ./src/index.js & nodemon --exec node ./src/crawl.js & nodemon --exec node ./src/subscribePendingTx.js & nodemon --exec node ./src/producer.js",
+    "start": "node src/index.js",
     "crawl": "node src/crawl.js",
     "producer": "node src/producer.js",
+    "subscribe": "node src/subscribePendingTx.js",
     "test": "eslint src"
   },
   "eslintConfig": {

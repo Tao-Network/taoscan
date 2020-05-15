@@ -16,8 +16,26 @@ services:
     container_name: "taoscan_client"
     ports:
       - "3000:3000"
-  taoscan_server:
+    restart: unless-stopped
+  taoscan_server1:
     image: "taoscan_server:latest"
-    container_name: "taoscan_server"
+    container_name: "taoscan_server_api"
     expose:
       - 3333
+    command: start
+    restart: unless-stopped
+  taoscan_server2:
+    image: "taoscan_server:latest"
+    container_name: "taoscan_server_producer"
+    command: run producer
+    restart: unless-stopped
+  taoscan_server3:
+    image: "taoscan_server:latest"
+    container_name: "taoscan_server_txsubscribe"
+    command: run subscribe
+    restart: unless-stopped
+  taoscan_server4:
+    image: "taoscan_server:latest"
+    container_name: "taoscan_server_crawl"
+    command: run crawl
+    restart: unless-stopped
