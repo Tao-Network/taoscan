@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  redis:
+    image: "redis:alpine"
+    container_name: "redis"
+    ports:
+     - "6379:6379"
+  mongodb_container:
+    image: "mongo:latest"
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
+
+  taoscan_client:
+    image: "taoscan_client:latest"
+    container_name: "taoscan_client"
+    ports:
+      - "3000:3000"
+  taoscan_server:
+    image: "taoscan_server:latest"
+    container_name: "taoscan_server"
+    expose:
+      - 3333

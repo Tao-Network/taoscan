@@ -209,37 +209,23 @@
                         <ul class="list-inline tao-footer__social">
                             <li class="list-inline-item">
                                 <a
-                                    href="https://t.me/taoblockchain"
+                                    href="https://t.me/TaoCryptocurrency"
                                     target="_blank">
                                     <i class="fa fa-telegram"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://www.facebook.com/taoblockchainofficial"
-                                    target="_blank">
-                                    <i class="fa fa-facebook"/>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a
-                                    href="https://twitter.com/taoblockchainANN"
+                                    href="https://twitter.com/taoblockchain"
                                     target="_blank">
                                     <i class="fa fa-twitter"/>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a
-                                    href="https://github.com/taoblockchain/"
+                                    href="https://github.com/Tao-Network/"
                                     target="_blank">
                                     <i class="fa fa-github"/>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a
-                                    href="https://www.reddit.com/r/Tao/"
-                                    target="_blank">
-                                    <i class="fa fa-reddit"/>
                                 </a>
                             </li>
                         </ul>
