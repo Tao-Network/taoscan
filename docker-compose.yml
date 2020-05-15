@@ -17,9 +17,9 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
-  taoscan_server1:
+  taoscan_server:
     image: "taoscan_server:latest"
-    container_name: "taoscan_server_api"
+    container_name: "taoscan_server"
     expose:
       - 3333
     command: start
