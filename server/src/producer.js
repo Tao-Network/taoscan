@@ -46,7 +46,7 @@ const watch = async () => {
         while (true) {
             let web3 = await Web3Util.getWeb3()
             let l = await countJobs()
-            if (l > 500) {
+            if (l > 50) {
                 logger.debug('%s jobs, sleep 2 seconds before adding more', l)
                 await sleep(2000)
                 continue
